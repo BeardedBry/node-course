@@ -53,11 +53,11 @@ yargs.command({
     }
 });
 
+yargs.parse();
 // add, remove, read, list 
 
 //console.log(chalk.blue.bold.inverse("Kristy!!!"));
 
-//yargs.parse();
 //console.log(yargs.argv);
 
 //console.log(process.argv);
