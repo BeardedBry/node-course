@@ -1,7 +1,6 @@
 const chalk = require('chalk');
 const yargs = require('yargs');
-const getNotes = require('./notes');
-const fs = require('fs');
+const notes = require('./notes.js');
 
 // customize yargs verion
 yargs.version('1.1.0');
@@ -23,10 +22,7 @@ yargs.command({
         }
     },
     handler: function (argv) {
-        console.log('Title: ' + argv.title);
-        console.log('Body: ' + argv.body);
-
-        //fs.writeFileSync(argv + '.txt', yargs.argv.body);
+        notes.addNote(argv.title, argv.body);
     }
 });
 
