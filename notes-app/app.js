@@ -30,9 +30,15 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'removes a note',
-    handler: function (argv) {
-        console.log('removing note');
-        notes.removeNote(argv.title);
+    builder: {
+        title: {
+            describe: 'note title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        const removed = notes.removeNote(argv.title);
     }
 });
 
@@ -40,7 +46,7 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'reads a note',
-    handler: function () {
+    handler() {
         console.log('reading note: ');
     }
 });
@@ -56,12 +62,3 @@ yargs.command({
 
 yargs.parse();
 // add, remove, read, list 
-
-//console.log(chalk.blue.bold.inverse("Kristy!!!"));
-
-//console.log(yargs.argv);
-
-//console.log(process.argv);
-//console.log(chalk.red.inverse('error'));
-// //fs.writeFileSync('notes.txt', 'new text');
-// fs.appendFileSync('notes.txt', '\nThis is appended text.');
